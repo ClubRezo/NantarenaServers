@@ -10,7 +10,7 @@ Handle the launch of CSGO server with a powerful set of options
 @date:    November 2013
 """
 
-import sys, os, argparse, subprocess, screenutils
+import sys, os, argparse, screenutils
 
 # program information
 __program__ = "csgo"
