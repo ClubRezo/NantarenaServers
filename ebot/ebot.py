@@ -53,15 +53,17 @@ def main():
     args = LauncherArgumentParser().parse_args()
 
     try:
+        os.chdir(BOT_ROOT_DIR)
+
         if args.bot_daemon:
-            screen = screenutils.Screen(BOT_SCREEN_NAME)
-            screen.initialize()
-            screen.send_commands("cd %s" % BOT_ROOT_DIR)
+            # init a new screen
+            screen = screenutils.Screen(BOT_SCREEN_NAME, initialize=True)
+
+            # send ebot start
             screen.send_commands("php bootstrap.php")
 
             print "[ " + bcolors.OKGREEN + "OK" + bcolors.ENDC  + " ] " + "Launching eBot server"
         else:
-            os.chdir(BOT_ROOT_DIR)
             os.system("php bootstrap.php")
         
             print "[ " + bcolors.OKGREEN + "OK" + bcolors.ENDC  + " ] " + "Terminating eBot server instance"
